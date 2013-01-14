@@ -13,6 +13,8 @@
 @end
 
 @implementation LoginController
+@synthesize request = _request;
+@synthesize hudProgress = _hudProgress;
 
 - (id)init
 {
@@ -25,7 +27,7 @@
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     
     //Top Red Area
-    UIView *headView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 255)];
+    UIView *headView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 250)];
     [headView setBackgroundColor:[UIColor colorWithHexString:@"#c61111"]];
     
     //Login Form 用户登陆
@@ -62,11 +64,23 @@
     [headView addSubview:rememberNameArea];
     
     //登陆按钮
-    UIImageView *loginBtn = [[UIImageView alloc] initWithFrame:CGRectMake(130, 230, 59, 55)];
-    [loginBtn setImage:[UIImage imageNamed:@"loginBtn.png"]];
+    UIButton *loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(135, 225, 59, 55)];
+    [loginBtn setBackgroundImage:[UIImage imageNamed:@"loginBtn.png"] forState:UIControlStateNormal];
+    [loginBtn setBackgroundImage:[UIImage imageNamed:@"loginBtn.png"] forState:UIControlStateHighlighted];
+    [loginBtn addTarget:self action:@selector(doLogin) forControlEvents:UIControlEventTouchUpInside];
+    
+    //联通logo
+    UIImageView *ucView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 250, 320, 226)];
+    [ucView setImage:[UIImage imageNamed:@"shadow.png"]];
+    
+    //手机门户logo
+    UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(75, 320, 173, 70)];
+    [logoView setImage:[UIImage imageNamed:@"it.png"]];
     
     [self.view addSubview:headView];
+    [self.view addSubview:ucView];
     [self.view addSubview:loginBtn];
+    [self.view addSubview:logoView];
 }
 
 
@@ -84,6 +98,7 @@
     }
 }
 
+//监听键盘回车按钮
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     UITextField *tfUserName = (UITextField *)[self.view viewWithTag:TAG_LOGIN_TF_USERNAME];
@@ -97,15 +112,51 @@
         return YES;
     }
     else if ([strUsername length]==0 || [strUserpwd length] == 0) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"账户名或者密码为空！请重新输入" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"用户名和密码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
         return NO;
+    }
+    else
+    {
+        [self doLogin];
     }
     
     [tfUserName resignFirstResponder];
     [tfUserPwd resignFirstResponder];
     
     return YES;
+}
+
+-(void) doLogin
+{
+    _hudProgress = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+	[self.navigationController.view addSubview:_hudProgress];
+	_hudProgress.delegate = self;
+	_hudProgress.labelText = @"登录中，请稍候";
+	[_hudProgress show:YES];
+    NSLog(@"%@",[Const loginUrl]);
+    [self setRequest:[ASIHTTPRequest requestWithURL:[NSURL URLWithString:[Const loginUrl]]]];
+	[_request setDelegate:self];
+	[_request startAsynchronous];
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request
+{
+    NSData *responseData = [request responseData];
+    NSLog(@"responseData:%@",responseData);
+    [_hudProgress hide:YES];
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    NSError *error = [request error];
+    NSLog(@"error:%@",error);
+    _hudProgress.mode = MBProgressHUDModeText;
+	_hudProgress.labelText = @"登录失败，请重试";
+	_hudProgress.margin = 10.f;
+	_hudProgress.yOffset = 150.f;
+	_hudProgress.removeFromSuperViewOnHide = YES;
+	[_hudProgress hide:YES afterDelay:3];
 }
 
 - (void)viewDidLoad

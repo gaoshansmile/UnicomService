@@ -29,6 +29,7 @@
     return YES;
 }
 
+//全局字体定义在这里
 - (UIFont *)getGlobalFont:(CGFloat)fontSize
 {
     return [UIFont fontWithName:@"FZLanTingHei-R-GBK" size:fontSize];

@@ -9,7 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "UIColor-RGB.h"
 #import "USFieldArea.h"
+#import "ASIHTTPRequest.h"
+#import "MBProgressHUD.h"
 
-@interface LoginController : UIViewController <UITextFieldDelegate>
+@interface LoginController : UIViewController <UITextFieldDelegate,MBProgressHUDDelegate>
+
+@property ASIHTTPRequest *request;
+@property MBProgressHUD *hudProgress;
 
 @end

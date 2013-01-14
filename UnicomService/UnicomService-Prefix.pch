@@ -3,6 +3,7 @@
 //
 
 #import <Availability.h>
+#import "Const.h"
 
 #ifndef __IPHONE_3_0
 #warning "This project uses features only available in iOS SDK 3.0 and later."
@@ -16,3 +17,4 @@
 
 #define TAG_LOGIN_TF_USERNAME                              10011
 #define TAG_LOGIN_TF_USERPWD                               10012
+#define VERSION                                            "1.0"
