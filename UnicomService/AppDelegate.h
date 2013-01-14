@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginController.h"
+#import "UIColor-RGB.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+@property UINavigationController *navController;
+@property LoginController *loginController;
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -18,5 +22,6 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+- (UIFont *)getGlobalFont:(CGFloat)fontSize;
 
 @end

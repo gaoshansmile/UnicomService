@@ -13,3 +13,6 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
 #endif
+
+#define TAG_LOGIN_TF_USERNAME                              10011
+#define TAG_LOGIN_TF_USERPWD                               10012
