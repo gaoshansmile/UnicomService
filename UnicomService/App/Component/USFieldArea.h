@@ -1,7 +1,7 @@
 //
 //  USFieldArea.h
 //  UnicomService
-//
+//  Custom Field Area combine UITextField (or CheckBox) and its description text.
 //  Created by Thierry on 13-1-11.
 //  Copyright (c) 2013年 Enway. All rights reserved.
 //
