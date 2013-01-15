@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C442F2416A5560B000A7ABF /* HttpService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C442F2316A5560B000A7ABF /* HttpService.m */; };
+		7C442F2716A55675000A7ABF /* JsonParseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C442F2616A55675000A7ABF /* JsonParseService.m */; };
+		7C442F3216A55E07000A7ABF /* AppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C442F3116A55E07000A7ABF /* AppContext.m */; };
 		7C645C6916A3E4CC00E2DFB0 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C645C6816A3E4CC00E2DFB0 /* User.m */; };
 		7C645C6D16A3E62D00E2DFB0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C645C6C16A3E62D00E2DFB0 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7C645C7B16A3EB5E00E2DFB0 /* Const.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C645C7A16A3EB5E00E2DFB0 /* Const.m */; };
@@ -86,6 +89,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C442F2216A5560B000A7ABF /* HttpService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpService.h; sourceTree = "<group>"; };
+		7C442F2316A5560B000A7ABF /* HttpService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpService.m; sourceTree = "<group>"; };
+		7C442F2516A55675000A7ABF /* JsonParseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonParseService.h; sourceTree = "<group>"; };
+		7C442F2616A55675000A7ABF /* JsonParseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonParseService.m; sourceTree = "<group>"; };
+		7C442F3016A55E07000A7ABF /* AppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppContext.h; sourceTree = "<group>"; };
+		7C442F3116A55E07000A7ABF /* AppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppContext.m; sourceTree = "<group>"; };
 		7C645C6716A3E4CC00E2DFB0 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		7C645C6816A3E4CC00E2DFB0 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		7C645C6B16A3E62D00E2DFB0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -209,6 +218,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C442F2016A555F1000A7ABF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				7C442F2216A5560B000A7ABF /* HttpService.h */,
+				7C442F2316A5560B000A7ABF /* HttpService.m */,
+				7C442F2516A55675000A7ABF /* JsonParseService.h */,
+				7C442F2616A55675000A7ABF /* JsonParseService.m */,
+				7C442F3016A55E07000A7ABF /* AppContext.h */,
+				7C442F3116A55E07000A7ABF /* AppContext.m */,
+			);
+			name = Service;
+			path = App/Service;
+			sourceTree = "<group>";
+		};
 		7C645C5C16A3E02D00E2DFB0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +415,7 @@
 		7C952FFE169FFD2500AC8565 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				7C442F2016A555F1000A7ABF /* Service */,
 				7C645C5C16A3E02D00E2DFB0 /* Model */,
 				7CC079CB16A01373000451CF /* Component */,
 				7C952FF8169FFB3E00AC8565 /* Helper */,
@@ -644,6 +668,9 @@
 				7C645C6D16A3E62D00E2DFB0 /* Reachability.m in Sources */,
 				7C645C7B16A3EB5E00E2DFB0 /* Const.m in Sources */,
 				7C645C9316A3FBD300E2DFB0 /* MBProgressHUD.m in Sources */,
+				7C442F2416A5560B000A7ABF /* HttpService.m in Sources */,
+				7C442F2716A55675000A7ABF /* JsonParseService.m in Sources */,
+				7C442F3216A55E07000A7ABF /* AppContext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,11 @@
 //
 #import "LoginController.h"
 #import "AppDelegate.h"
+#import "AppContext.h"
+#import "HttpService.h"
+#import "Const.h"
+
+static BOOL rememberName = YES;
 
 @interface LoginController ()
 
@@ -56,6 +61,8 @@
     [rememberNameArea setCheckBoxEntry:YES];
     [rememberNameArea setBackGroundColor:[UIColor blackColor]];
     [rememberNameArea setFontColor:@"#ffffff"];
+    [rememberNameArea setTextFieldTag:TAG_LOGIN_TF_REM];
+    [rememberNameArea addTarget:self action:@selector(toggleRem) forControlEvents:UIControlEventTouchUpInside];
     [rememberNameArea initView];
     
     [headView addSubview:userLoginText];
@@ -127,36 +134,69 @@
     return YES;
 }
 
+
+//用户登录
 -(void) doLogin
 {
+    UITextField *tfUserName = (UITextField *)[self.view viewWithTag:TAG_LOGIN_TF_USERNAME];
+    NSString *strUsername = [tfUserName text];
+    UITextField *tfUserPwd = (UITextField *)[self.view viewWithTag:TAG_LOGIN_TF_USERPWD];
+    NSString *strUserpwd = [tfUserPwd text];
+    
+    if ([strUsername length]==0 || [strUserpwd length] == 0) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"用户名和密码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+        return;
+    }
+    
     _hudProgress = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:_hudProgress];
 	_hudProgress.delegate = self;
 	_hudProgress.labelText = @"登录中，请稍候";
 	[_hudProgress show:YES];
-    NSLog(@"%@",[Const loginUrl]);
-    [self setRequest:[ASIHTTPRequest requestWithURL:[NSURL URLWithString:[Const loginUrl]]]];
-	[_request setDelegate:self];
-	[_request startAsynchronous];
+    [self performSelectorInBackground:@selector(asyncLogin) withObject:nil];
 }
 
-- (void)requestFinished:(ASIHTTPRequest *)request
+-(void) asyncLogin
 {
-    NSData *responseData = [request responseData];
-    NSLog(@"responseData:%@",responseData);
-    [_hudProgress hide:YES];
+    NSString *url=[Const loginUrl];
+    User *user=[[HttpService sharedInstance] doLoginRequest:url];
+    [self performSelectorOnMainThread:@selector(requestFinished:) withObject:user waitUntilDone:YES];
 }
 
-- (void)requestFailed:(ASIHTTPRequest *)request
+//用户登录请求成功，返回数据
+- (void)requestFinished:(User *)user
 {
-    NSError *error = [request error];
-    NSLog(@"error:%@",error);
+    NSString *re=@"";
+    if (user) {
+        re=@"登录成功";
+    }
+    else
+    {
+        re=@"登录失败，请重试";
+    }
     _hudProgress.mode = MBProgressHUDModeText;
-	_hudProgress.labelText = @"登录失败，请重试";
+	_hudProgress.labelText = re;
 	_hudProgress.margin = 10.f;
 	_hudProgress.yOffset = 150.f;
 	_hudProgress.removeFromSuperViewOnHide = YES;
 	[_hudProgress hide:YES afterDelay:3];
+}
+
+//记住用户名开关
+-(void) toggleRem
+{
+//    NSLog(@"rememberNameChecked");
+    UIImageView *remImage = (UIImageView *)[self.view viewWithTag:TAG_LOGIN_TF_REM];
+    if (rememberName) {
+        [remImage setImage:nil];
+        rememberName=NO;
+    }
+    else
+    {
+        [remImage setImage:[UIImage imageNamed:@"check.png"]];
+        rememberName=YES;
+    }
 }
 
 - (void)viewDidLoad

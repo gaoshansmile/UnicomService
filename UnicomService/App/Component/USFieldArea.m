@@ -69,6 +69,7 @@
     else{
         imageView=[[UIImageView alloc] initWithFrame:CGRectMake(240, 12.5, 15, 15)];
         [imageView setImage:[UIImage imageNamed:@"check.png"]];
+        [imageView setTag:_textFieldTag];
     }
     
     NSLog(@"%f",_usFrame.size.width);

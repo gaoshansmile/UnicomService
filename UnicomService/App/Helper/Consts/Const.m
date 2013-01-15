@@ -11,12 +11,12 @@
 
 +(NSString *) serverDomain
 {
-    return @"http://127.0.0.1:9000";
+    return @"http://219.234.181.233:9000";
 }
 
 +(NSString *) loginUrl
 {
-    return [[self serverDomain] stringByAppendingFormat:@"/application/login?version=%s",VERSION];
+    return [[self serverDomain] stringByAppendingFormat:@"/application/login?version=%@",VERSION];
 }
 
 @end
