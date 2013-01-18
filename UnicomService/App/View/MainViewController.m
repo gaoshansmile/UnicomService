@@ -7,6 +7,9 @@
 //
 
 #import "MainViewController.h"
+#import "AppDelegate.h"
+#import "AppContext.h"
+#import "User.h"
 
 @interface MainViewController ()
 
@@ -14,19 +17,27 @@
 
 @implementation MainViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)init
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self=[super init];
     if (self) {
-        // Custom initialization
+        [self loadAllView];
     }
     return self;
+}
+
+-(void)loadAllView
+{
+    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    User *user = [AppContext getBean:@"CurrentUser"];
+    NSLog(@"name%@",[user name]);
+    
 }
 
 - (void)didReceiveMemoryWarning

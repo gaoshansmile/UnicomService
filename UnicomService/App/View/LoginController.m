@@ -6,10 +6,10 @@
 //  Copyright (c) 2013年 Enway. All rights reserved.
 //
 #import "LoginController.h"
-#import "AppDelegate.h"
-#import "AppContext.h"
 #import "HttpService.h"
 #import "Const.h"
+#import "AppDelegate.h"
+#import "MainViewController.h"
 
 static BOOL rememberName = YES;
 
@@ -18,20 +18,25 @@ static BOOL rememberName = YES;
 @end
 
 @implementation LoginController
+
 @synthesize request = _request;
 @synthesize hudProgress = _hudProgress;
+@synthesize strUsername = _strUsername;
+@synthesize strUserpwd = _strUserpwd;
 
 - (id)init
 {
-    [self loadAllView];
+    self=[super init];
+    if (self) {
+        [self loadAllView];
+    }
     return self;
 }
 
 -(void)loadAllView
 {
-    AppDelegate *app = [[UIApplication sharedApplication] delegate];
-    
     //Top Red Area
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
     UIView *headView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 250)];
     [headView setBackgroundColor:[UIColor colorWithHexString:@"#c61111"]];
     
@@ -109,16 +114,16 @@ static BOOL rememberName = YES;
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     UITextField *tfUserName = (UITextField *)[self.view viewWithTag:TAG_LOGIN_TF_USERNAME];
-    NSString *strUsername = [tfUserName text];
+    _strUsername = [tfUserName text];
     UITextField *tfUserPwd = (UITextField *)[self.view viewWithTag:TAG_LOGIN_TF_USERPWD];
-    NSString *strUserpwd = [tfUserPwd text];
+    _strUserpwd = [tfUserPwd text];
     
     if ([textField tag] == TAG_LOGIN_TF_USERNAME) {
         [tfUserName resignFirstResponder];
         [tfUserPwd becomeFirstResponder];
         return YES;
     }
-    else if ([strUsername length]==0 || [strUserpwd length] == 0) {
+    else if ([_strUsername length]==0 || [_strUserpwd length] == 0) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"用户名和密码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
         return NO;
@@ -139,24 +144,25 @@ static BOOL rememberName = YES;
 -(void) doLogin
 {
     UITextField *tfUserName = (UITextField *)[self.view viewWithTag:TAG_LOGIN_TF_USERNAME];
-    NSString *strUsername = [tfUserName text];
+    _strUsername = [tfUserName text];
     UITextField *tfUserPwd = (UITextField *)[self.view viewWithTag:TAG_LOGIN_TF_USERPWD];
-    NSString *strUserpwd = [tfUserPwd text];
+    _strUserpwd = [tfUserPwd text];
     
-    if ([strUsername length]==0 || [strUserpwd length] == 0) {
+    if ([_strUsername length]==0 || [_strUserpwd length] == 0) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"用户名和密码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
         return;
+    }else{    
+        _hudProgress = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+        [self.navigationController.view addSubview:_hudProgress];
+        _hudProgress.delegate = self;
+        _hudProgress.labelText = @"登录中，请稍候";
+        [_hudProgress show:YES];
+        [self performSelectorInBackground:@selector(asyncLogin) withObject:nil];
     }
-    
-    _hudProgress = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-	[self.navigationController.view addSubview:_hudProgress];
-	_hudProgress.delegate = self;
-	_hudProgress.labelText = @"登录中，请稍候";
-	[_hudProgress show:YES];
-    [self performSelectorInBackground:@selector(asyncLogin) withObject:nil];
 }
 
+//异步登录请求
 -(void) asyncLogin
 {
     NSString *url=[Const loginUrl];
@@ -169,18 +175,29 @@ static BOOL rememberName = YES;
 {
     NSString *re=@"";
     if (user) {
-        re=@"登录成功";
+        re=[user token];
+        [user setName:_strUsername];
+        [user setPassword:_strUserpwd];
+        NSError *error=nil;
+        AppDelegate *app = [[UIApplication sharedApplication] delegate];
+        [[app managedObjectContext] save:&error];
+        
+        //跳转到主页
+        MainViewController *mainController=[[MainViewController alloc] init];
+        [[app navController] pushViewController:mainController animated:YES];
+        [_hudProgress hide:YES];
     }
     else
     {
         re=@"登录失败，请重试";
+        _hudProgress.mode = MBProgressHUDModeText;
+        _hudProgress.labelText = re;
+        _hudProgress.margin = 10.f;
+        _hudProgress.yOffset = 150.f;
+        _hudProgress.removeFromSuperViewOnHide = YES;
+        [_hudProgress hide:YES afterDelay:3];
     }
-    _hudProgress.mode = MBProgressHUDModeText;
-	_hudProgress.labelText = re;
-	_hudProgress.margin = 10.f;
-	_hudProgress.yOffset = 150.f;
-	_hudProgress.removeFromSuperViewOnHide = YES;
-	[_hudProgress hide:YES afterDelay:3];
+    
 }
 
 //记住用户名开关

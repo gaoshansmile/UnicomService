@@ -7,14 +7,23 @@
 //
 
 #import "JsonParseService.h"
-#import "AppDelegate.h"
+#import "AppContext.h"
 
 @implementation JsonParseService
 
++(id)convertToJson:(NSString *)response
+{
+    id jsonValue = [response JSONValue];
+    return jsonValue;
+}
+
 +(User *)parseLogin:(NSString *)response
 {
-    AppDelegate *app = [[UIApplication sharedApplication] delegate];
-    User *user =(User *)[NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[app managedObjectContext]]; 
+    SBJsonParser * parser = [[SBJsonParser alloc] init];
+    NSMutableDictionary *jsonDic = [parser objectWithString:response];
+    NSString *token = [jsonDic objectForKey:@"data"];
+    User *user=[AppContext getBean:@"CurrentUser"];
+    [user setToken:token];
     return user;
 }
 

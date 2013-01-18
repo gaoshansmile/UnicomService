@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LoginController.h"
+#import "MainViewController.h"
 #import "UIColor-RGB.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

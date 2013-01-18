@@ -2,7 +2,7 @@
 //  User.m
 //  UnicomService
 //
-//  Created by 老邢 Thierry on 13-1-14.
+//  Created by 老邢 Thierry on 13-1-16.
 //  Copyright (c) 2013年 Enway. All rights reserved.
 //
 
@@ -14,5 +14,7 @@
 @dynamic id;
 @dynamic name;
 @dynamic password;
+@dynamic token;
+
 
 @end

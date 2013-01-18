@@ -16,5 +16,7 @@
 
 @property ASIHTTPRequest *request;
 @property MBProgressHUD *hudProgress;
+@property NSString *strUsername;
+@property NSString *strUserpwd;
 
 @end

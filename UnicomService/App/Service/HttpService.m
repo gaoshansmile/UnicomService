@@ -8,7 +8,6 @@
 
 #import "HttpService.h"
 #import "ASIHTTPRequest.h"
-#import "AppContext.h"
 #import "JsonParseService.h"
 
 @implementation HttpService
@@ -29,10 +28,11 @@ static HttpService *_shareInstance=nil;
     NSString *result=nil;
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request startSynchronous];
-    
     NSError *error = [request error];
     if(error)
+    {
         NSLog(@"%@",error);
+    }
     else
     {
         result = [request responseString];
@@ -40,6 +40,7 @@ static HttpService *_shareInstance=nil;
     return  result;
 }
 
+//用户登陆请求
 -(User *)doLoginRequest:(NSString *)url
 {
     NSString *result=[self getRequest:url];
