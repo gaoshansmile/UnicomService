@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
+#import "AppViewController.h"
 
-
-@interface MainViewController : UIViewController
+@interface MainViewController : AppViewController
 
 @end

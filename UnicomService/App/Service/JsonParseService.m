@@ -17,6 +17,8 @@
     return jsonValue;
 }
 
+
+//解析登陆
 +(User *)parseLogin:(NSString *)response
 {
     SBJsonParser * parser = [[SBJsonParser alloc] init];
@@ -25,6 +27,21 @@
     User *user=[AppContext getBean:@"CurrentUser"];
     [user setToken:token];
     return user;
+}
+
+//解析顶部大图
++(NSMutableArray *)parseTopImages:(NSString *)response
+{
+    SBJsonParser * parser = [[SBJsonParser alloc] init];
+    NSMutableDictionary *jsonDic = [parser objectWithString:response];
+    NSMutableArray *topImages = [jsonDic objectForKey:@"data"];
+    NSMutableArray *images = [[NSMutableArray alloc] init];
+    for (int i=0; i<[topImages count]; i++) {
+        NSMutableDictionary *image = topImages[i];
+        [images addObject:[image objectForKey:@"URI"]];
+        NSLog(@"uri:%@",[image objectForKey:@"URI"]);
+    }
+    return images;
 }
 
 @end

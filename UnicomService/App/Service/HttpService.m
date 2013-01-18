@@ -52,4 +52,16 @@ static HttpService *_shareInstance=nil;
     return user;
 }
 
+//首页顶部大图请求
+-(NSMutableArray *)doTopImagesRequest:(NSString *)url
+{
+    NSString *result=[self getRequest:url];
+    NSMutableArray *images=nil;
+    if (result) {
+        NSLog(@"respone:%@",result);
+        images=[JsonParseService parseTopImages:result];
+    }
+    return images;
+}
+
 @end

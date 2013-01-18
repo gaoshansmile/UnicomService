@@ -10,6 +10,9 @@
 #import "AppDelegate.h"
 #import "AppContext.h"
 #import "User.h"
+#import "ImageFlowView.h"
+#import "Const.h"
+#import "HttpService.h"
 
 @interface MainViewController ()
 
@@ -21,23 +24,33 @@
 {
     self=[super init];
     if (self) {
-        [self loadAllView];
     }
     return self;
-}
-
--(void)loadAllView
-{
-    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
     User *user = [AppContext getBean:@"CurrentUser"];
     NSLog(@"name%@",[user name]);
-    
+    [self showLoading:@"获取大图中"];
+    [self performSelectorInBackground:@selector(asynGetRequest) withObject:nil];    
+}
+
+
+//异步获取首页顶部大图
+-(void) asynGetRequest
+{
+    NSString *url=[Const topImageUrl];
+    NSMutableArray *imageLinks=[[HttpService sharedInstance] doTopImagesRequest:url];
+    [self performSelectorOnMainThread:@selector(requestFinished:) withObject:imageLinks waitUntilDone:YES];
+}
+
+-(void) requestFinished:(NSMutableArray *)imageLinks
+{
+    ImageFlowView *flowView = [[ImageFlowView alloc] initWithFrame:CGRectMake(0, 0, 320, 200) withImageLinks:imageLinks];
+    [self.view addSubview:flowView];
+    [self hideLoading];
 }
 
 - (void)didReceiveMemoryWarning

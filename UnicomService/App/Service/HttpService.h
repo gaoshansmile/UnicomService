@@ -18,4 +18,6 @@
 
 -(User *)doLoginRequest:(NSString *) url;
 
+-(NSMutableArray *)doTopImagesRequest:(NSString *)url;
+
 @end

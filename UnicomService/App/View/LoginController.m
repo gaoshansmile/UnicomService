@@ -18,9 +18,6 @@ static BOOL rememberName = YES;
 @end
 
 @implementation LoginController
-
-@synthesize request = _request;
-@synthesize hudProgress = _hudProgress;
 @synthesize strUsername = _strUsername;
 @synthesize strUserpwd = _strUserpwd;
 
@@ -28,32 +25,33 @@ static BOOL rememberName = YES;
 {
     self=[super init];
     if (self) {
-        [self loadAllView];
     }
     return self;
 }
 
--(void)loadAllView
+- (void)viewDidLoad
 {
-    //Top Red Area
+    [super viewDidLoad];
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    
+    //顶部红色区域
     UIView *headView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 250)];
     [headView setBackgroundColor:[UIColor colorWithHexString:@"#c61111"]];
     
-    //Login Form 用户登陆
+    //用户登陆表单
     UITextView *userLoginText=[[UITextView alloc] initWithFrame:CGRectMake(20, 45, 100, 30)];
     [userLoginText setText:@"用户登录"];
     [userLoginText setBackgroundColor:[UIColor clearColor]];
     [userLoginText setTextColor:[UIColor colorWithWhite:1.0 alpha:1.0]];
     [userLoginText setFont:[app getGlobalFont:18]];
     
-    //用户名
+    //用户名区域
     USFieldArea *nameFieldArea = [[USFieldArea alloc] initWithFrame:CGRectMake(25, 80, 275, 40) withText:@"用户名: "];
     [nameFieldArea setTextFieldTag:TAG_LOGIN_TF_USERNAME];
     [nameFieldArea setTextFieldDelegate:self];
     [nameFieldArea initView];
     
-    //密码
+    //密码区域
     USFieldArea *passFieldArea = [[USFieldArea alloc] initWithFrame:CGRectMake(25, 121, 275, 40) withText:@"密  码: "];
     [passFieldArea setSecureTextEntry:YES];
     [passFieldArea setTextFieldTag:TAG_LOGIN_TF_USERPWD];
@@ -152,18 +150,14 @@ static BOOL rememberName = YES;
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"用户名和密码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
         return;
-    }else{    
-        _hudProgress = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-        [self.navigationController.view addSubview:_hudProgress];
-        _hudProgress.delegate = self;
-        _hudProgress.labelText = @"登录中，请稍候";
-        [_hudProgress show:YES];
-        [self performSelectorInBackground:@selector(asyncLogin) withObject:nil];
+    }else{
+        [self showLoading:@"登录中，请稍候"];
+        [self performSelectorInBackground:@selector(asynGetRequest) withObject:nil];
     }
 }
 
 //异步登录请求
--(void) asyncLogin
+-(void) asynGetRequest
 {
     NSString *url=[Const loginUrl];
     User *user=[[HttpService sharedInstance] doLoginRequest:url];
@@ -185,17 +179,11 @@ static BOOL rememberName = YES;
         //跳转到主页
         MainViewController *mainController=[[MainViewController alloc] init];
         [[app navController] pushViewController:mainController animated:YES];
-        [_hudProgress hide:YES];
+        [self hideLoading];
     }
     else
     {
-        re=@"登录失败，请重试";
-        _hudProgress.mode = MBProgressHUDModeText;
-        _hudProgress.labelText = re;
-        _hudProgress.margin = 10.f;
-        _hudProgress.yOffset = 150.f;
-        _hudProgress.removeFromSuperViewOnHide = YES;
-        [_hudProgress hide:YES afterDelay:3];
+        [self toast:@"登录失败，请重试"];
     }
     
 }
@@ -203,7 +191,6 @@ static BOOL rememberName = YES;
 //记住用户名开关
 -(void) toggleRem
 {
-//    NSLog(@"rememberNameChecked");
     UIImageView *remImage = (UIImageView *)[self.view viewWithTag:TAG_LOGIN_TF_REM];
     if (rememberName) {
         [remImage setImage:nil];
@@ -214,12 +201,6 @@ static BOOL rememberName = YES;
         [remImage setImage:[UIImage imageNamed:@"check.png"]];
         rememberName=YES;
     }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning

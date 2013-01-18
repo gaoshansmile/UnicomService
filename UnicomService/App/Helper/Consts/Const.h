@@ -13,4 +13,6 @@
 
 +(NSString *) loginUrl;
 
++(NSString *) topImageUrl;
+
 @end

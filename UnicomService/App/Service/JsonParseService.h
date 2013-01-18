@@ -14,4 +14,6 @@
 
 +(User *)parseLogin:(NSString *)response;
 
++(NSMutableArray *)parseTopImages:(NSString *)response;
+
 @end

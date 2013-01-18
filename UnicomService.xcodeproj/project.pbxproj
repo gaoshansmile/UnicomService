@@ -87,6 +87,9 @@
 		7CC108E516A13D2E0071084B /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC108C816A13D2E0071084B /* 9.png */; };
 		7CC108E616A13D2E0071084B /* ucLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC108C916A13D2E0071084B /* ucLogo.png */; };
 		7CC108E916A13E000071084B /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC108E816A13E000071084B /* check.png */; };
+		7CDA3E5516A9425100AA79C6 /* ImageFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA3E5416A9425100AA79C6 /* ImageFlowView.m */; };
+		7CDA3E5916A94C5C00AA79C6 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA3E5816A94C5C00AA79C6 /* AppViewController.m */; };
+		7CDA3E7016A9673A00AA79C6 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA3E6F16A9673A00AA79C6 /* UIImageView+WebCache.m */; };
 		7CE6914C16A7F71600F89EA7 /* AppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6914B16A7F71600F89EA7 /* AppContext.m */; };
 /* End PBXBuildFile section */
 
@@ -220,6 +223,12 @@
 		7CC108C816A13D2E0071084B /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
 		7CC108C916A13D2E0071084B /* ucLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ucLogo.png; sourceTree = "<group>"; };
 		7CC108E816A13E000071084B /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		7CDA3E5316A9425100AA79C6 /* ImageFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageFlowView.h; sourceTree = "<group>"; };
+		7CDA3E5416A9425100AA79C6 /* ImageFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFlowView.m; sourceTree = "<group>"; };
+		7CDA3E5716A94C5C00AA79C6 /* AppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppViewController.h; path = App/View/AppViewController.h; sourceTree = "<group>"; };
+		7CDA3E5816A94C5C00AA79C6 /* AppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppViewController.m; path = App/View/AppViewController.m; sourceTree = "<group>"; };
+		7CDA3E6E16A9673A00AA79C6 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
+		7CDA3E6F16A9673A00AA79C6 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		7CE6914A16A7F71600F89EA7 /* AppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppContext.h; sourceTree = "<group>"; };
 		7CE6914B16A7F71600F89EA7 /* AppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppContext.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -433,6 +442,8 @@
 				7CC079BB16A010E5000451CF /* LoginController.m */,
 				7CC079BC16A010E5000451CF /* MainViewController.h */,
 				7CC079BD16A010E5000451CF /* MainViewController.m */,
+				7CDA3E5716A94C5C00AA79C6 /* AppViewController.h */,
+				7CDA3E5816A94C5C00AA79C6 /* AppViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -440,6 +451,7 @@
 		7C952FF8169FFB3E00AC8565 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				7CDA3E6D16A9673A00AA79C6 /* UIImageView+WebCache */,
 				7CA9955E16A6C728006981A0 /* SBJson */,
 				7C645C9016A3FBD300E2DFB0 /* MBProgressHUD */,
 				7C645C7816A3EB3600E2DFB0 /* Consts */,
@@ -537,6 +549,8 @@
 			children = (
 				7CC079CC16A0139B000451CF /* USFieldArea.h */,
 				7CC079CD16A0139B000451CF /* USFieldArea.m */,
+				7CDA3E5316A9425100AA79C6 /* ImageFlowView.h */,
+				7CDA3E5416A9425100AA79C6 /* ImageFlowView.m */,
 			);
 			name = Component;
 			path = App/Component;
@@ -581,6 +595,16 @@
 				7CC108C816A13D2E0071084B /* 9.png */,
 			);
 			path = Type;
+			sourceTree = "<group>";
+		};
+		7CDA3E6D16A9673A00AA79C6 /* UIImageView+WebCache */ = {
+			isa = PBXGroup;
+			children = (
+				7CDA3E6E16A9673A00AA79C6 /* UIImageView+WebCache.h */,
+				7CDA3E6F16A9673A00AA79C6 /* UIImageView+WebCache.m */,
+			);
+			name = "UIImageView+WebCache";
+			path = "App/Helper/UIImageView+WebCache";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -754,6 +778,9 @@
 				7CA9958316A6C728006981A0 /* SBJsonWriter.m in Sources */,
 				7CA9958716A6CAC2006981A0 /* User.m in Sources */,
 				7CE6914C16A7F71600F89EA7 /* AppContext.m in Sources */,
+				7CDA3E5516A9425100AA79C6 /* ImageFlowView.m in Sources */,
+				7CDA3E5916A94C5C00AA79C6 /* AppViewController.m in Sources */,
+				7CDA3E7016A9673A00AA79C6 /* UIImageView+WebCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
