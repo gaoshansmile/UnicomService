@@ -16,6 +16,7 @@
 @property NSInteger currentImageIndex;
 @property NSInteger imageCount;
 @property UIScrollView *scrollView;
+@property NSMutableArray *createdImage;
 
 -(id)initWithFrame:(CGRect)frame withImageLinks:(NSMutableArray *)imageLinks;
 

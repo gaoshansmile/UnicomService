@@ -7,6 +7,7 @@
 //
 
 #import "ImageFlowView.h"
+#import "UIImageView+WebCache.h"
 
 @implementation ImageFlowView
 
@@ -15,6 +16,7 @@
 @synthesize currentImageIndex = _currentImageIndex;
 @synthesize imageCount = _imageCount;
 @synthesize scrollView = _scrollView;
+@synthesize createdImage = _createdImage;
 
 - (id)initWithFrame:(CGRect)frame withImageLinks:(NSMutableArray *)imageLinks
 {
@@ -24,6 +26,12 @@
         _currentImageIndex = 0;
         _imageLinks = imageLinks;
         _imageCount = [_imageLinks count];
+        _createdImage = [[NSMutableArray alloc] init];
+        
+        for (unsigned i = 0; i < _imageCount; i++)
+        {
+            [_createdImage addObject:[NSNull null]];
+        }
         
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, frame.size.height)];
         [_scrollView setPagingEnabled:YES];
@@ -39,22 +47,69 @@
         [_pageControl setCurrentPage:_currentImageIndex];
         [_pageControl setNumberOfPages:[_imageLinks count]];
         
-        [self addSubview:_pageControl];
         [self addSubview:_scrollView];
+        [self addSubview:_pageControl];
         
-        [self fillScrollView];
+        [self loadImage:0];
+        [self loadImage:1];
     }
     return self;
 }
 
--(void)fillScrollView
+-(void)loadImage:(int) index
 {
-    UIImageView *imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 180)];
+    if (index < 0)
+        return;
+    if (index >= _imageCount)
+        return;
+    
+    UIImageView *imageView = [_createdImage objectAtIndex:index];
+    
+    if ((NSNull *)imageView == [NSNull null])
+    {
+        imageView = [[UIImageView alloc] init];
+        [_createdImage replaceObjectAtIndex:index withObject:imageView];
+        
+        NSString *imageLink = [_imageLinks objectAtIndex:index];
+        imageLink = [USDOMAIN stringByAppendingString:imageLink];
+        
+        CGRect frame = _scrollView.frame;
+        frame.origin.x = frame.size.width*index;
+        frame.origin.y = 0;
+        [imageView setFrame:frame];
+        [imageView setImageWithURL:[NSURL URLWithString:imageLink]
+                  placeholderImage:[UIImage imageNamed:@"t1.png"]];
+        
+        [_scrollView addSubview:imageView];
+    }
+
+    
 }
 
--(id)initView
+
+- (void)scrollViewDidScroll:(UIScrollView *)sender
 {
-    //    _pageControl
+    NSLog(@"scrollViewDidScroll");
+    // Switch the indicator when more than 50% of the previous/next page is visible
+    CGFloat pageWidth = _scrollView.frame.size.width;
+    int page = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    _pageControl.currentPage = page;
+    
+    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
+    [self loadImage:page - 1];
+    [self loadImage:page];
+    [self loadImage:page + 1];
+    
+    // A possible optimization would be to unload the views+controllers which are no longer visible
+}
+
+// 触摸屏幕并拖拽画面，再松开，最后停止时，触发该函数
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    NSLog(@"scrollViewDidEndDragging  -  End of Scrolling.");
+}
+// 滚动停止时，触发该函数
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    NSLog(@"scrollViewDidEndDecelerating  -   End of Scrolling.");
 }
 
 /*

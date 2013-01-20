@@ -9,19 +9,14 @@
 #import "Const.h"
 @implementation Const
 
-+(NSString *) serverDomain
-{
-    return @"http://127.0.0.1:9000";
-}
-
 +(NSString *) loginUrl
 {
-    return [[self serverDomain] stringByAppendingFormat:@"/application/login?version=%@",VERSION];
+    return [USDOMAIN stringByAppendingFormat:@"/application/login?version=%@",VERSION];
 }
 
 +(NSString *) topImageUrl
 {
-    return [[self serverDomain] stringByAppendingFormat:@"/application/getImages?version=%@",VERSION];
+    return [USDOMAIN stringByAppendingFormat:@"/application/getImages?version=%@",VERSION];
 }
 
 @end

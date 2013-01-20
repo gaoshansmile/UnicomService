@@ -19,3 +19,4 @@
 #define TAG_LOGIN_TF_USERPWD                               10012
 #define TAG_LOGIN_TF_REM                                   10013
 #define VERSION                                            @"1.0"
+#define USDOMAIN                                           @"http://192.168.1.103:9000"

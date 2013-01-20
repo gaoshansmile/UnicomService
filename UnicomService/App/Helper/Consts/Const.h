@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 @interface Const : NSObject
 
-+(NSString *) serverDomain;
-
 +(NSString *) loginUrl;
 
 +(NSString *) topImageUrl;
