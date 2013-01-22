@@ -429,7 +429,6 @@
 		7C952FA3169FF09400AC8565 = {
 			isa = PBXGroup;
 			children = (
-				7C37CC7A16AA95B50024AAD9 /* MapKit.framework */,
 				7C952FBA169FF09400AC8565 /* UnicomService */,
 				7C952FDC169FF09400AC8565 /* UnicomServiceTests */,
 				7C952FB1169FF09400AC8565 /* Frameworks */,
@@ -449,6 +448,7 @@
 		7C952FB1169FF09400AC8565 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7C37CC7A16AA95B50024AAD9 /* MapKit.framework */,
 				7C37CC7816AA94EB0024AAD9 /* ImageIO.framework */,
 				7C645C8A16A3F52200E2DFB0 /* libz.dylib */,
 				7C645C8816A3F4A000E2DFB0 /* libxml2.dylib */,

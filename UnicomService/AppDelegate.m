@@ -14,6 +14,7 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
 @synthesize loginController = _loginController;
 @synthesize navController = _navController;
 

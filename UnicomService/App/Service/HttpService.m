@@ -3,6 +3,7 @@
 //  UnicomService
 //
 //  Created by 老邢 Thierry on 13-1-15.
+//  Service handle http connection and data request
 //  Copyright (c) 2013年 Enway. All rights reserved.
 //
 

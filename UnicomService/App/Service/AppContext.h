@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface AppContext : NSObject
+
 +(void)init;
 
 +(id)getBean:(NSString*)key;
 
 +(void)setBean:(NSString*)key :(id)value;
+
 @end

@@ -19,7 +19,6 @@ static BOOL _hasKeyBoard = NO;
     User *user =(User *)[NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:[app managedObjectContext]];
     beans = [[NSMutableDictionary alloc] init];
     [beans setObject:user forKey:@"CurrentUser"];
-//    [beans setObject:[[[MyUserDAO alloc] init] autorelease] forKey:@"MyUserDAO"];
 }
 
 +(id)getBean:(NSString*)key {
@@ -29,5 +28,6 @@ static BOOL _hasKeyBoard = NO;
 +(void)setBean:(NSString*)key :(id)value {
     [beans setObject:value forKey:key];
 }
+
 
 @end

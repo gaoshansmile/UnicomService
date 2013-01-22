@@ -12,6 +12,7 @@
 #import "UIColor-RGB.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+
 @property UINavigationController *navController;
 @property LoginController *loginController;
 

@@ -167,9 +167,7 @@ static BOOL rememberName = YES;
 //用户登录请求成功，返回数据
 - (void)requestFinished:(User *)user
 {
-    NSString *re=@"";
     if (user) {
-        re=[user token];
         [user setName:_strUsername];
         [user setPassword:_strUserpwd];
         NSError *error=nil;
@@ -185,7 +183,6 @@ static BOOL rememberName = YES;
     {
         [self toast:@"登录失败，请重试"];
     }
-    
 }
 
 //记住用户名开关

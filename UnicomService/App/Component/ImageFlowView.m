@@ -56,6 +56,8 @@
     return self;
 }
 
+
+//加载图片
 -(void)loadImage:(int) index
 {
     if (index < 0)
@@ -89,7 +91,6 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
-    NSLog(@"scrollViewDidScroll");
     // Switch the indicator when more than 50% of the previous/next page is visible
     CGFloat pageWidth = _scrollView.frame.size.width;
     int page = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;

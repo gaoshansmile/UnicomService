@@ -1,7 +1,7 @@
 //
 //  JsonParseService.m
 //  UnicomService
-//
+//  Service handle json data analystic and convert to Model 
 //  Created by 老邢 Thierry on 13-1-15.
 //  Copyright (c) 2013年 Enway. All rights reserved.
 //
@@ -16,7 +16,6 @@
     id jsonValue = [response JSONValue];
     return jsonValue;
 }
-
 
 //解析登陆
 +(User *)parseLogin:(NSString *)response
