@@ -121,11 +121,6 @@ static BOOL rememberName = YES;
         [tfUserPwd becomeFirstResponder];
         return YES;
     }
-    else if ([_strUsername length]==0 || [_strUserpwd length] == 0) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"用户名和密码不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alertView show];
-        return NO;
-    }
     else
     {
         [self doLogin];
@@ -176,7 +171,7 @@ static BOOL rememberName = YES;
         
         //跳转到主页
         MainViewController *mainController=[[MainViewController alloc] init];
-        [[app navController] pushViewController:mainController animated:YES];
+        [app.navController pushViewController:mainController animated:YES];
         [self hideLoading];
     }
     else

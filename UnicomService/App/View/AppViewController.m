@@ -27,8 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _hudProgress = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:_hudProgress];
+    _hudProgress = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:_hudProgress];
 	// Do any additional setup after loading the view.
 }
 
@@ -49,7 +49,7 @@
     _hudProgress.mode = MBProgressHUDModeText;
     _hudProgress.labelText = text;
     _hudProgress.margin = 10.f;
-    _hudProgress.yOffset = 150.f;
+    _hudProgress.yOffset = 10.f;
     _hudProgress.removeFromSuperViewOnHide = YES;
     [_hudProgress hide:YES afterDelay:3];
 }

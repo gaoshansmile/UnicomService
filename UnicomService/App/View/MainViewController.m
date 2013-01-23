@@ -31,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[[self navigationController] navigationBar] setTintColor: [UIColor colorWithHexString:@"#c61111"]];
     User *user = [AppContext getBean:@"CurrentUser"];
     NSLog(@"name%@",[user name]);
     [self showLoading:@"获取大图中"];
@@ -48,9 +49,18 @@
 
 -(void) requestFinished:(NSMutableArray *)imageLinks
 {
-    ImageFlowView *flowView = [[ImageFlowView alloc] initWithFrame:CGRectMake(0, 0, 320, 200) withImageLinks:imageLinks];
-    [self.view addSubview:flowView];
-    [self hideLoading];
+    NSLog(@"imageLinks%d",[imageLinks count]);
+    if([imageLinks count]>0)
+    {
+        ImageFlowView *flowView = [[ImageFlowView alloc] initWithFrame:CGRectMake(0, 0, 320, 200) withImageLinks:imageLinks];
+        [self.view addSubview:flowView];
+        [self hideLoading];
+    }
+    else
+    {
+        [self toast:@"更新首页大图失败"];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning

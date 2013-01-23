@@ -25,8 +25,8 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];    
     _loginController=[[LoginController alloc] init];
-    _navController = [[UINavigationController alloc] initWithRootViewController:_loginController];
-    _navController.navigationBarHidden = YES;
+    _navController=[[UINavigationController alloc] initWithRootViewController:_loginController];
+    _navController.navigationBarHidden=YES;
     [self.window addSubview:_navController.view];
     [self.window makeKeyAndVisible];
     return YES;
