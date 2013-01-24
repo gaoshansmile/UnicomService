@@ -24,18 +24,9 @@
     if (self) {
         // Initialization code
         _currentImageIndex = 0;
-        _imageLinks = imageLinks;
-        _imageCount = [_imageLinks count];
-        _createdImage = [[NSMutableArray alloc] init];
-        
-        for (unsigned i = 0; i < _imageCount; i++)
-        {
-            [_createdImage addObject:[NSNull null]];
-        }
         
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, frame.size.height)];
         [_scrollView setPagingEnabled:YES];
-        [_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width * _imageCount, _scrollView.frame.size.height)];
         [_scrollView setShowsHorizontalScrollIndicator:NO];
         [_scrollView setShowsVerticalScrollIndicator:NO];
         [_scrollView setScrollsToTop:NO];
@@ -45,15 +36,29 @@
         [_pageControl setPageIndicatorTintColor:[UIColor colorWithHexString:@"#5a5959"]];
         [_pageControl setCurrentPageIndicatorTintColor:[UIColor colorWithHexString:@"#6c2929"]];
         [_pageControl setCurrentPage:_currentImageIndex];
-        [_pageControl setNumberOfPages:[_imageLinks count]];
         
         [self addSubview:_scrollView];
         [self addSubview:_pageControl];
         
-        [self loadImage:0];
-        [self loadImage:1];
+        [self reloadView:imageLinks];
     }
     return self;
+}
+
+
+-(void)reloadView:(NSMutableArray *)imageLinks{
+    _imageLinks = imageLinks;
+    _imageCount = [_imageLinks count];
+    _createdImage = [[NSMutableArray alloc] init];
+    for (unsigned i = 0; i < _imageCount; i++)
+    {
+        [_createdImage addObject:[NSNull null]];
+    }
+    [_pageControl setNumberOfPages:[_imageLinks count]];
+    [_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width * _imageCount, _scrollView.frame.size.height)];
+    [self loadImage:0];
+    [self loadImage:1];
+    [self setNeedsDisplay];
 }
 
 
@@ -64,6 +69,9 @@
         return;
     if (index >= _imageCount)
         return;
+    if (_imageCount==0) {
+        return;
+    }
     
     UIImageView *imageView = [_createdImage objectAtIndex:index];
     

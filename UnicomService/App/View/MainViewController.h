@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 #import "AppViewController.h"
+#import "ImageFlowView.h"
 
 @interface MainViewController : AppViewController
+
+@property ImageFlowView *flowView;
 
 @end

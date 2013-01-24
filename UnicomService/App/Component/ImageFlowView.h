@@ -18,6 +18,10 @@
 @property UIScrollView *scrollView;
 @property NSMutableArray *createdImage;
 
+//初始化
 -(id)initWithFrame:(CGRect)frame withImageLinks:(NSMutableArray *)imageLinks;
+
+//加载数据
+-(void)reloadView:(NSMutableArray *)imageLinks;
 
 @end

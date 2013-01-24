@@ -10,7 +10,6 @@
 #import "AppDelegate.h"
 #import "AppContext.h"
 #import "User.h"
-#import "ImageFlowView.h"
 #import "Const.h"
 #import "HttpService.h"
 
@@ -19,6 +18,8 @@
 @end
 
 @implementation MainViewController
+
+@synthesize flowView=_flowView;
 
 - (id)init
 {
@@ -31,9 +32,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[[self navigationController] navigationBar] setTintColor: [UIColor colorWithHexString:@"#c61111"]];
-    User *user = [AppContext getBean:@"CurrentUser"];
-    NSLog(@"name%@",[user name]);
+    [self.topBarText setText:@"IT服务支撑平台"];
+     NSMutableArray *imageLinks=nil;
+    _flowView = [[ImageFlowView alloc] initWithFrame:CGRectMake(0,self.topBar.frame.size.height, 320, 135) withImageLinks:imageLinks];
+    [self.view addSubview:_flowView];
     [self showLoading:@"获取大图中"];
     [self performSelectorInBackground:@selector(asynGetRequest) withObject:nil];    
 }
@@ -47,13 +49,13 @@
     [self performSelectorOnMainThread:@selector(requestFinished:) withObject:imageLinks waitUntilDone:YES];
 }
 
+//获取顶部大图成功
 -(void) requestFinished:(NSMutableArray *)imageLinks
 {
     NSLog(@"imageLinks%d",[imageLinks count]);
     if([imageLinks count]>0)
     {
-        ImageFlowView *flowView = [[ImageFlowView alloc] initWithFrame:CGRectMake(0, 0, 320, 200) withImageLinks:imageLinks];
-        [self.view addSubview:flowView];
+        [_flowView reloadView:imageLinks];
         [self hideLoading];
     }
     else

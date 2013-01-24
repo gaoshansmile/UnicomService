@@ -12,6 +12,9 @@
 
 @interface AppViewController : UIViewController<MBProgressHUDDelegate>
 
+@property UIImageView *topBar;
+@property UILabel *topBarText;
+
 @property MBProgressHUD *hudProgress;
 
 - (void)showLoading:(NSString *) text;
