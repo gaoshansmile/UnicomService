@@ -10,9 +10,10 @@
 #import "MBProgressHUD.h"
 #import "AppViewController.h"
 #import "ImageFlowView.h"
+#import "GridView.h"
 
-@interface MainViewController : AppViewController
+@interface MainViewController : AppViewController<GridAdapter>
 
 @property ImageFlowView *flowView;
-
+@property NSMutableArray *gridItems;
 @end

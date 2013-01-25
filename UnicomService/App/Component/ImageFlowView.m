@@ -88,7 +88,7 @@
         frame.origin.y = 0;
         [imageView setFrame:frame];
         [imageView setImageWithURL:[NSURL URLWithString:imageLink]
-                  placeholderImage:[UIImage imageNamed:@"t1.png"]];
+                  placeholderImage:[UIImage imageNamed:@"1.png"]];
         
         [_scrollView addSubview:imageView];
     }

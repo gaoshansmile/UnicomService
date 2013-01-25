@@ -52,7 +52,7 @@
     [self.view addSubview:_topBar];
 }
 
-- (void)showLoading:(NSString *) text
+- (void)showLoading:(NSString *)text
 {
     _hudProgress.delegate = self;
     _hudProgress.labelText = text;
