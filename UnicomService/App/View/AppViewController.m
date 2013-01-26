@@ -18,6 +18,7 @@
 @synthesize hudProgress = _hudProgress;
 @synthesize topBar = _topBar;
 @synthesize topBarText = _topBarText;
+@synthesize backBtn = _backBtn;
 
 - (id)init
 {
@@ -47,9 +48,20 @@
     [_topBarText setBackgroundColor:[UIColor clearColor]];
     [_topBarText setTextColor:[UIColor whiteColor]];
     [_topBarText setFont:[app getGlobalFont:18]];
-    
+    [_topBarText setText:@"移动客户端"];
     [_topBar addSubview:_topBarText];
     [self.view addSubview:_topBar];
+    
+    //如果不是主页，则添加返回按钮
+    if(![NSStringFromClass(self.class) isEqualToString:@"MainViewController"])
+    {
+        //返回按钮
+        _backBtn = [[UIButton alloc] initWithFrame:CGRectMake(5, (_topBar.frame.size.height-29)/2, 50, 29)];
+        [_backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+        [_backBtn setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateHighlighted];
+        [_backBtn addTarget:self action:@selector(backBtnTap) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_backBtn];
+    }
 }
 
 - (void)showLoading:(NSString *)text
@@ -72,6 +84,12 @@
     _hudProgress.yOffset = 10.f;
     _hudProgress.removeFromSuperViewOnHide = YES;
     [_hudProgress hide:YES afterDelay:3];
+}
+
+-(void)backBtnTap
+{
+    NSLog(@"backbtnTap");
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

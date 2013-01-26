@@ -14,11 +14,13 @@
 
 @property UIImageView *topBar;
 @property UILabel *topBarText;
+@property UIButton *backBtn;
 
 @property MBProgressHUD *hudProgress;
 
 - (void)showLoading:(NSString *) text;
 - (void)hideLoading;
 - (void)toast:(NSString *)text;
+- (void)backBtnTap;
 
 @end

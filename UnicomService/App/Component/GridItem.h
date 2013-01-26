@@ -3,6 +3,7 @@
 //  UnicomService
 //
 //  Created by 老邢 Thierry on 13-1-25.
+//  GirdView Item Model
 //  Copyright (c) 2013年 Enway. All rights reserved.
 //
 
@@ -12,6 +13,7 @@
 
 @property NSString *title;
 @property UIImage *image;
+@property NSString *ctrlName;
 
-- (id)initWithTitle:(NSString *)title image:(UIImage *)image;
+- (id)initWithTitle:(NSString *)title image:(UIImage *)image ctrlName:(NSString *)name;
 @end
