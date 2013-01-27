@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "AppViewController.h"
 
-@interface SystemController : AppViewController
+@interface SystemController : AppViewController<UITableViewDelegate,UITableViewDataSource>
+
+@property UITableView *tableView;
 
 @end

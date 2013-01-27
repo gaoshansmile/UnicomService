@@ -39,6 +39,8 @@
 		7C72A1E916A3DF9100FC0321 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C72A1DF16A3DF9100FC0321 /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7C72A1EA16A3DF9100FC0321 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C72A1E116A3DF9100FC0321 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7C72A1EF16A3DFB300FC0321 /* UIColor-RGB.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C72A1EE16A3DFB300FC0321 /* UIColor-RGB.m */; };
+		7C7B077316B5158D0080BC3F /* SystemStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7B077216B5158D0080BC3F /* SystemStat.m */; };
+		7C7B078B16B51D3B0080BC3F /* USSelectField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7B078A16B51D3B0080BC3F /* USSelectField.m */; };
 		7C87770C16B12C68007E3FBA /* topBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C87770B16B12C68007E3FBA /* topBar.png */; };
 		7C8F4C6C16B3F26F00C5C1C5 /* RunStatus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C8F4C6B16B3F26F00C5C1C5 /* RunStatus@2x.png */; };
 		7C8F4D7916B3F89500C5C1C5 /* SystemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8F4D7816B3F89500C5C1C5 /* SystemController.m */; };
@@ -192,6 +194,10 @@
 		7C72A1E216A3DF9100FC0321 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
 		7C72A1ED16A3DFB300FC0321 /* UIColor-RGB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor-RGB.h"; sourceTree = "<group>"; };
 		7C72A1EE16A3DFB300FC0321 /* UIColor-RGB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor-RGB.m"; sourceTree = "<group>"; };
+		7C7B077116B5158D0080BC3F /* SystemStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemStat.h; sourceTree = "<group>"; };
+		7C7B077216B5158D0080BC3F /* SystemStat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemStat.m; sourceTree = "<group>"; };
+		7C7B078916B51D3B0080BC3F /* USSelectField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USSelectField.h; sourceTree = "<group>"; };
+		7C7B078A16B51D3B0080BC3F /* USSelectField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USSelectField.m; sourceTree = "<group>"; };
 		7C87770B16B12C68007E3FBA /* topBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBar.png; sourceTree = "<group>"; };
 		7C8F4C6B16B3F26F00C5C1C5 /* RunStatus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RunStatus@2x.png"; path = "MainLogo/RunStatus@2x.png"; sourceTree = "<group>"; };
 		7C8F4D7716B3F89500C5C1C5 /* SystemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemController.h; sourceTree = "<group>"; };
@@ -388,6 +394,8 @@
 				7C952FCC169FF09400AC8565 /* UnicomService.xcdatamodeld */,
 				7CA9958516A6CAC2006981A0 /* User.h */,
 				7CA9958616A6CAC2006981A0 /* User.m */,
+				7C7B077116B5158D0080BC3F /* SystemStat.h */,
+				7C7B077216B5158D0080BC3F /* SystemStat.m */,
 			);
 			name = Model;
 			path = App/Model;
@@ -677,6 +685,8 @@
 				7CA5DF5516B2715B0088CFB2 /* GridViewCell.m */,
 				7CA5DF5F16B2861C0088CFB2 /* GridItem.h */,
 				7CA5DF6016B2861C0088CFB2 /* GridItem.m */,
+				7C7B078916B51D3B0080BC3F /* USSelectField.h */,
+				7C7B078A16B51D3B0080BC3F /* USSelectField.m */,
 			);
 			name = Component;
 			path = App/Component;
@@ -927,6 +937,8 @@
 				7C8F4D8216B3F91F00C5C1C5 /* WarnListController.m in Sources */,
 				7C8F4D8516B3F93500C5C1C5 /* WarnStatController.m in Sources */,
 				7C8F4D8816B3F94500C5C1C5 /* WarnTrendController.m in Sources */,
+				7C7B077316B5158D0080BC3F /* SystemStat.m in Sources */,
+				7C7B078B16B51D3B0080BC3F /* USSelectField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
