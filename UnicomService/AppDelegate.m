@@ -20,10 +20,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //注册全局上下文
     [AppContext init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];    
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    //初始化登录View
     _loginController=[[LoginController alloc] init];
     _navController=[[UINavigationController alloc] initWithRootViewController:_loginController];
     _navController.navigationBarHidden=YES;

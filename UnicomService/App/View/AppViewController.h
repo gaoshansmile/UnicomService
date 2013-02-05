@@ -1,7 +1,7 @@
 //
 //  AppViewController.h
 //  UnicomService
-//
+//  所有ViewController下的父类
 //  Created by 老邢 Thierry on 13-1-18.
 //  Copyright (c) 2013年 Enway. All rights reserved.
 //
@@ -12,8 +12,11 @@
 
 @interface AppViewController : UIViewController<MBProgressHUDDelegate>
 
+//顶部状态条
 @property UIImageView *topBar;
+//顶部状态文字
 @property UILabel *topBarText;
+//返回按钮
 @property UIButton *backBtn;
 
 @property MBProgressHUD *hudProgress;

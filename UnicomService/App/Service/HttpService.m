@@ -32,7 +32,7 @@ static HttpService *_shareInstance=nil;
     NSError *error = [request error];
     if(error)
     {
-        NSLog(@"%@",error);
+        NSLog(@"request error%@",error);
     }
     else
     {
@@ -59,7 +59,7 @@ static HttpService *_shareInstance=nil;
     NSString *result=[self getRequest:url];
     NSMutableArray *images=nil;
     if (result) {
-        NSLog(@"respone:%@",result);
+        NSLog(@"respone result:%@",result);
         images=[JsonParseService parseTopImages:result];
     }
     return images;

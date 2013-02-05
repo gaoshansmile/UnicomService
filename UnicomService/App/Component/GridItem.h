@@ -3,7 +3,7 @@
 //  UnicomService
 //
 //  Created by 老邢 Thierry on 13-1-25.
-//  GirdView Item Model
+//  九宫格菜单每一项的数据模型
 //  Copyright (c) 2013年 Enway. All rights reserved.
 //
 

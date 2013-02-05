@@ -69,7 +69,7 @@
      NSMutableArray *imageLinks=nil;
     _flowView = [[ImageFlowView alloc] initWithFrame:CGRectMake(0,self.topBar.frame.size.height, 320, 135) withImageLinks:imageLinks];
     
-    //九宫格
+    //九宫格菜单
     GridView *gridView = [[GridView alloc] initWithFrame:CGRectMake(0,self.topBar.frame.size.height+_flowView.frame.size.height, 320, 300)];
     [gridView setAdapter:self];
     [gridView initView];

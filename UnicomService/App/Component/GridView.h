@@ -3,7 +3,7 @@
 //  UnicomService
 //
 //  Created by 老邢 Thierry on 13-1-25.
-//  Show Gridview in iOS
+//  九宫格菜单
 //  Copyright (c) 2013年 Enway. All rights reserved.
 //
 

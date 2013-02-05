@@ -41,6 +41,7 @@
 		7C72A1EF16A3DFB300FC0321 /* UIColor-RGB.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C72A1EE16A3DFB300FC0321 /* UIColor-RGB.m */; };
 		7C7B077316B5158D0080BC3F /* SystemStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7B077216B5158D0080BC3F /* SystemStat.m */; };
 		7C7B078B16B51D3B0080BC3F /* USSelectField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7B078A16B51D3B0080BC3F /* USSelectField.m */; };
+		7C7E1BD416C112110072EB66 /* pop_sep.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C7E1BD316C112110072EB66 /* pop_sep.png */; };
 		7C87770C16B12C68007E3FBA /* topBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C87770B16B12C68007E3FBA /* topBar.png */; };
 		7C8F4C6C16B3F26F00C5C1C5 /* RunStatus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C8F4C6B16B3F26F00C5C1C5 /* RunStatus@2x.png */; };
 		7C8F4D7916B3F89500C5C1C5 /* SystemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8F4D7816B3F89500C5C1C5 /* SystemController.m */; };
@@ -49,6 +50,8 @@
 		7C8F4D8216B3F91F00C5C1C5 /* WarnListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8F4D8116B3F91F00C5C1C5 /* WarnListController.m */; };
 		7C8F4D8516B3F93500C5C1C5 /* WarnStatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8F4D8416B3F93500C5C1C5 /* WarnStatController.m */; };
 		7C8F4D8816B3F94500C5C1C5 /* WarnTrendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C8F4D8716B3F94400C5C1C5 /* WarnTrendController.m */; };
+		7C948B3516C0B0C900975EAB /* popup_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C948B3316C0B0C900975EAB /* popup_arrow.png */; };
+		7C948B3616C0B0C900975EAB /* popup_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C948B3416C0B0C900975EAB /* popup_bg.png */; };
 		7C952FB3169FF09400AC8565 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C952FB2169FF09400AC8565 /* UIKit.framework */; };
 		7C952FB5169FF09400AC8565 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C952FB4169FF09400AC8565 /* Foundation.framework */; };
 		7C952FB7169FF09400AC8565 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C952FB6169FF09400AC8565 /* CoreGraphics.framework */; };
@@ -198,6 +201,7 @@
 		7C7B077216B5158D0080BC3F /* SystemStat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemStat.m; sourceTree = "<group>"; };
 		7C7B078916B51D3B0080BC3F /* USSelectField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USSelectField.h; sourceTree = "<group>"; };
 		7C7B078A16B51D3B0080BC3F /* USSelectField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USSelectField.m; sourceTree = "<group>"; };
+		7C7E1BD316C112110072EB66 /* pop_sep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pop_sep.png; sourceTree = "<group>"; };
 		7C87770B16B12C68007E3FBA /* topBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBar.png; sourceTree = "<group>"; };
 		7C8F4C6B16B3F26F00C5C1C5 /* RunStatus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "RunStatus@2x.png"; path = "MainLogo/RunStatus@2x.png"; sourceTree = "<group>"; };
 		7C8F4D7716B3F89500C5C1C5 /* SystemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemController.h; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 		7C8F4D8416B3F93500C5C1C5 /* WarnStatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarnStatController.m; sourceTree = "<group>"; };
 		7C8F4D8616B3F94400C5C1C5 /* WarnTrendController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarnTrendController.h; sourceTree = "<group>"; };
 		7C8F4D8716B3F94400C5C1C5 /* WarnTrendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarnTrendController.m; sourceTree = "<group>"; };
+		7C948B3316C0B0C900975EAB /* popup_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popup_arrow.png; sourceTree = "<group>"; };
+		7C948B3416C0B0C900975EAB /* popup_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popup_bg.png; sourceTree = "<group>"; };
 		7C952FAE169FF09400AC8565 /* UnicomService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnicomService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C952FB2169FF09400AC8565 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7C952FB4169FF09400AC8565 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -653,6 +659,9 @@
 		7CC079C316A01103000451CF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7C7E1BD316C112110072EB66 /* pop_sep.png */,
+				7C948B3316C0B0C900975EAB /* popup_arrow.png */,
+				7C948B3416C0B0C900975EAB /* popup_bg.png */,
 				7C8F4C6B16B3F26F00C5C1C5 /* RunStatus@2x.png */,
 				7C87770B16B12C68007E3FBA /* topBar.png */,
 				7C645CAF16A4150A00E2DFB0 /* shadow.png */,
@@ -848,6 +857,9 @@
 				7CA5DF6A16B2BE8E0088CFB2 /* WarnStat@2x.png in Resources */,
 				7CA5DF6B16B2BE8E0088CFB2 /* WarnTrend@2x.png in Resources */,
 				7C8F4C6C16B3F26F00C5C1C5 /* RunStatus@2x.png in Resources */,
+				7C948B3516C0B0C900975EAB /* popup_arrow.png in Resources */,
+				7C948B3616C0B0C900975EAB /* popup_bg.png in Resources */,
+				7C7E1BD416C112110072EB66 /* pop_sep.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1038,6 +1050,7 @@
 				GCC_PREFIX_HEADER = "UnicomService/UnicomService-Prefix.pch";
 				INFOPLIST_FILE = "UnicomService/UnicomService-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1053,6 +1066,7 @@
 				GCC_PREFIX_HEADER = "UnicomService/UnicomService-Prefix.pch";
 				INFOPLIST_FILE = "UnicomService/UnicomService-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

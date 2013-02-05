@@ -64,6 +64,7 @@
     }
 }
 
+//显示Loading动画
 - (void)showLoading:(NSString *)text
 {
     _hudProgress.delegate = self;
@@ -71,11 +72,13 @@
     [_hudProgress show:YES];
 }
 
+//隐藏Loading动画
 - (void)hideLoading
 {
     [_hudProgress hide:YES];
 }
 
+//弹出提示，3秒后自动消失
 - (void)toast:(NSString *)text
 {
     _hudProgress.mode = MBProgressHUDModeText;
@@ -86,6 +89,7 @@
     [_hudProgress hide:YES afterDelay:3];
 }
 
+//处理返回按钮
 -(void)backBtnTap
 {
     NSLog(@"backbtnTap");

@@ -12,7 +12,7 @@
 @interface USFieldArea : UIControl
 
 
-//frame
+//不能用frame做变量名，否则会覆盖父类的frame，导致坐标错位
 @property CGRect usFrame;
 //是否为密码
 @property BOOL secureTextEntry;

@@ -24,8 +24,12 @@
 
     USSelectField *selectField = [[USSelectField alloc] initWithFrame:CGRectMake(0, self.topBar.frame.size.height, self.view.frame.size.width, 35)];
     _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, selectField.frame.size.height+self.topBar.frame.size.height, self.view.frame.size.width, 300) style:UITableViewStylePlain];
+    
     [self.view addSubview:selectField];
     [self.view addSubview:_tableView];
+    
+    NSMutableArray *selectDataArray = [[NSMutableArray alloc] initWithObjects:@"总部系统运行状态",@"集团系统运行状态",nil];
+    [selectField initView:selectDataArray];
     
 }
 
