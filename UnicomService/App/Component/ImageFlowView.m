@@ -8,6 +8,7 @@
 
 #import "ImageFlowView.h"
 #import "UIImageView+WebCache.h"
+#import "UIColor-RGB.h"
 
 @implementation ImageFlowView
 
@@ -33,10 +34,12 @@
         [_scrollView setDelegate:self];
         
         _pageControl= [[UIPageControl alloc] initWithFrame:CGRectMake(0, frame.size.height-20, 320, 20)];
-        [_pageControl setPageIndicatorTintColor:[UIColor colorWithHexString:@"#5a5959"]];
-        [_pageControl setCurrentPageIndicatorTintColor:[UIColor colorWithHexString:@"#6c2929"]];
         [_pageControl setCurrentPage:_currentImageIndex];
-        
+        //如果iOS版本高于6.0
+        if (SYSTEM_VERSION_GREATER_THAN(@"6.0")) {
+            [_pageControl setPageIndicatorTintColor:[UIColor colorWithHexString:@"#5a5959"]];
+            [_pageControl setCurrentPageIndicatorTintColor:[UIColor colorWithHexString:@"#6c2929"]];
+        }
         [self addSubview:_scrollView];
         [self addSubview:_pageControl];
         
