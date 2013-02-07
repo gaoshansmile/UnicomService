@@ -40,22 +40,12 @@
 {
     NSString *url=[Const systemUrl];
     NSMutableArray *system=[[HttpService sharedInstance] doSystemRequest:url];
-    [self performSelectorOnMainThread:@selector(requestFinished:) withObject:system waitUntilDone:YES];
+//    [self performSelectorOnMainThread:@selector(requestFinished:) withObject:system waitUntilDone:YES];
 }
 
 //获取顶部大图成功
 -(void) requestFinished:(NSMutableArray *)system
 {
-    NSLog(@"imageLinks%d",[imageLinks count]);
-    if([imageLinks count]>0)
-    {
-        [_flowView reloadView:imageLinks];
-        [self hideLoading];
-    }
-    else
-    {
-        [self toast:@"更新首页大图失败"];
-    }
     
 }
 

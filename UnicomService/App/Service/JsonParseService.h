@@ -16,4 +16,6 @@
 
 +(NSMutableArray *)parseTopImages:(NSString *)response;
 
++(NSMutableArray *)parseSystem:(NSString *)response;
+
 @end

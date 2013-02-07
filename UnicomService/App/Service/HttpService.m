@@ -69,12 +69,12 @@ static HttpService *_shareInstance=nil;
 -(NSMutableArray *)doSystemRequest:(NSString *)url
 {
     NSString *result=[self getRequest:url];
-    NSMutableArray *images=nil;
+    NSMutableArray *systemStats=nil;
     if (result) {
         NSLog(@"respone result:%@",result);
-        images=[JsonParseService parseSystem:result];
+        systemStats=[JsonParseService parseSystem:result];
     }
-    return images;
+    return systemStats;
 }
 
 @end
