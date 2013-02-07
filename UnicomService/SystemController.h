@@ -14,5 +14,6 @@
 
 @property UITableView *tableView;
 @property USSelectField *selectField;
+@property NSMutableArray *systemStats;
 
 @end

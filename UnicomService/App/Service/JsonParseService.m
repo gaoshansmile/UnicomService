@@ -52,7 +52,7 @@
     NSMutableArray *data = [jsonDic objectForKey:@"data"];
     NSMutableArray *systemStats = [[NSMutableArray alloc] init];
     for (int i=0; i<[data count]; i++) {
-        SystemStat *ss = [SystemStat init];
+        SystemStat *ss = [[SystemStat alloc] init];
         [ss setSys:[data[i] objectForKey:@"SYS"]];
         [ss setProvince:[data[i] objectForKey:@"PROVINCE"]];
         [ss setDomain:[data[i] objectForKey:@"DOMAIN"]];

@@ -26,8 +26,10 @@ static HttpService *_shareInstance=nil;
 
 -(NSString *)getRequest:(NSString *)url
 {
+    NSString *urlEncode=[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"urlEncode:%@",urlEncode);
     NSString *result=nil;
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlEncode]];
     [request startSynchronous];
     NSError *error = [request error];
     if(error)
