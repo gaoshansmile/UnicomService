@@ -13,4 +13,5 @@
 
 +(NSString *) topImageUrl;
 
++(NSString *) systemUrl;
 @end

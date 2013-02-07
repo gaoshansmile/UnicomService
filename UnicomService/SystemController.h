@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "AppViewController.h"
+#import "USSelectField.h"
 
 @interface SystemController : AppViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property UITableView *tableView;
+@property USSelectField *selectField;
 
 @end

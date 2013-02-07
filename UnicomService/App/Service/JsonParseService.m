@@ -8,6 +8,7 @@
 
 #import "JsonParseService.h"
 #import "AppContext.h"
+#import "SystemStat.h"
 
 @implementation JsonParseService
 
@@ -41,6 +42,26 @@
         NSLog(@"uri:%@",[image objectForKey:@"URI"]);
     }
     return images;
+}
+
+//解析系统运行状态
++(NSMutableArray *)parseSystem:(NSString *)response
+{
+    SBJsonParser * parser = [[SBJsonParser alloc] init];
+    NSMutableDictionary *jsonDic = [parser objectWithString:response];
+    NSMutableArray *data = [jsonDic objectForKey:@"data"];
+    NSMutableArray *systemStats = [[NSMutableArray alloc] init];
+    for (int i=0; i<[data count]; i++) {
+        SystemStat *ss = [SystemStat init];
+        [ss setSys:[data[i] objectForKey:@"SYS"]];
+        [ss setProvince:[data[i] objectForKey:@"PROVINCE"]];
+        [ss setDomain:[data[i] objectForKey:@"DOMAIN"]];
+        [ss setTotal:[data[i] objectForKey:@"TOTAL"]];
+        [ss setFinish:[data[i] objectForKey:@"FINISH"]];
+        [ss setUnfinish:[data[i] objectForKey:@"UNFINISH"]];
+        [systemStats addObject:ss];
+    }
+    return systemStats;
 }
 
 @end

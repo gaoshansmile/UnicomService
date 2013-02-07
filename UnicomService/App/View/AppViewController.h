@@ -1,7 +1,7 @@
 //
 //  AppViewController.h
 //  UnicomService
-//  所有ViewController下的父类
+//  所有ViewController的父类
 //  Created by 老邢 Thierry on 13-1-18.
 //  Copyright (c) 2013年 Enway. All rights reserved.
 //
@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 #import "UIColor-RGB.h"
+#import "HttpService.h"
 
 @interface AppViewController : UIViewController<MBProgressHUDDelegate>
 

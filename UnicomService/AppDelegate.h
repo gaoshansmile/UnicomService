@@ -24,6 +24,5 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-- (UIFont *)getGlobalFont:(CGFloat)fontSize;
 
 @end

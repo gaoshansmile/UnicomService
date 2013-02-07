@@ -21,13 +21,12 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        AppDelegate *app = [[UIApplication sharedApplication] delegate];
         _usFrame=frame;
         _imageView = [[UIImageView alloc] init];
         _label = [[UILabel alloc] init];
         [_label setTextAlignment:UITextAlignmentCenter];
         [_label setBackgroundColor:[UIColor clearColor]];
-        [_label setFont:[app getGlobalFont:13]];
+        [_label setFont:[UIFont fontWithName:FONT_FAMILY size:13]];
         [self addSubview:_imageView];
         [self addSubview:_label];
     }

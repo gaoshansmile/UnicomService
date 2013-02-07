@@ -20,4 +20,6 @@
 
 -(NSMutableArray *)doTopImagesRequest:(NSString *)url;
 
+-(NSMutableArray *)doSystemRequest:(NSString *)url;
+
 @end

@@ -1,0 +1,19 @@
+Listening for transport dt_socket at address: 8000
+16:29:03,352 INFO  ~ Starting /Users/Enway/Code/server/cms
+16:29:04,190 WARN  ~ You're running Play! in DEV mode
+16:29:04,328 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+16:29:11,892 INFO  ~ Application 'cms' is now started !
+16:29:11,962 ERROR ~ 
+
+@6d2d8g8d8
+Application.index action not found
+
+Action not found
+Action Application.index could not be found. Error raised is No method public static void index() was found in class controllers.Application
+
+play.exceptions.ActionNotFoundException: Action Application.index not found
+	at play.mvc.ActionInvoker.getActionMethod(ActionInvoker.java:601)
+	at play.mvc.ActionInvoker.resolve(ActionInvoker.java:85)
+	at Invocation.HTTP Request(Play!)
+Caused by: java.lang.Exception: No method public static void index() was found in class controllers.Application
+	... 3 more

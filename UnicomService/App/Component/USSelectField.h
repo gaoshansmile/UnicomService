@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface USSelectField : UIView<UITableViewDataSource,UITableViewDelegate>
+@interface USSelectField : UIControl<UITableViewDataSource,UITableViewDelegate>
 
-@property NSString *selectFieldTitle;
 @property UILabel *selectLabel;
-@property NSMutableDictionary *selectItems;
-@property UIButton *selectField;
-@property UITableView *selectPopUp;
+@property UIView *selectField;
+@property UIView *popUpView;
 @property NSMutableArray *selectData;
 
--(void) initView:(NSMutableArray *) array;
+-(void)initView:(NSMutableArray *) array;
+
+-(void)togglePopUpView;
 
 @end

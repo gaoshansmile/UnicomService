@@ -32,8 +32,7 @@ static BOOL rememberName = YES;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    AppDelegate *app = [[UIApplication sharedApplication] delegate];
-    
+
     //顶部红色区域
     UIView *headView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 250)];
     [headView setBackgroundColor:[UIColor colorWithHexString:@"#c61111"]];
@@ -43,7 +42,7 @@ static BOOL rememberName = YES;
     [userLoginText setText:@"用户登录"];
     [userLoginText setBackgroundColor:[UIColor clearColor]];
     [userLoginText setTextColor:[UIColor colorWithWhite:1.0 alpha:1.0]];
-    [userLoginText setFont:[app getGlobalFont:18]];
+    [userLoginText setFont:[UIFont fontWithName:FONT_FAMILY size:18]];
     
     //用户名区域
     USFieldArea *nameFieldArea = [[USFieldArea alloc] initWithFrame:CGRectMake(25, 80, 275, 40) withText:@"用户名: "];

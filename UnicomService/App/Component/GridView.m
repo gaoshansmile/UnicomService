@@ -29,8 +29,6 @@
     NSInteger itemCount=[self.adapter gridViewNumberOfItems:self];
     NSInteger boundWidth=self.bounds.size.width;
     NSInteger padding = (boundWidth-(_itemSize.width*_columnCount))/(_columnCount+1);
-    NSLog(@"padding%d",padding);
-    NSLog(@"itemCount%d",itemCount);
     for (int i=0; i<itemCount; i++) {
         GridItem *item = [self.adapter gridView:self itemForIndex:i];
         
@@ -40,7 +38,8 @@
         
         NSLog(@"colIndex%d",colIndex);
         NSLog(@"rowIndex%d",rowIndex);
-        //计算坐标便宜量
+        
+        //计算坐标偏移量
         int xOffSet = (_itemSize.width+padding)*colIndex+padding;
         int yOffSet = (_itemSize.height+padding)*rowIndex+padding;;
         

@@ -11,11 +11,9 @@
 
 @implementation USSelectField
 
-@synthesize selectItems = _selectItems;
 @synthesize selectField = _selectField;
-@synthesize selectFieldTitle = _selectFieldTitle;
 @synthesize selectLabel = _selectLabel;
-@synthesize selectPopUp = _selectPopUp;
+@synthesize popUpView = _popUpView;
 @synthesize selectData = _selectData;
 
 - (id)initWithFrame:(CGRect)frame
@@ -23,17 +21,12 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        AppDelegate *app = [[UIApplication sharedApplication] delegate];
-        
+        [self setBackgroundColor:[UIColor blackColor]];
         _selectLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.bounds.size.width-10, self.bounds.size.height)];
         [_selectLabel setTextColor:[UIColor whiteColor]];
-        [_selectLabel setFont:[app getGlobalFont:15]];
+        [_selectLabel setFont:[UIFont fontWithName:FONT_FAMILY size:15]];
         [_selectLabel setBackgroundColor:[UIColor clearColor]];
-        
-        _selectField = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
-        [_selectField setBackgroundColor:[UIColor blackColor]];
-        [_selectField addSubview:_selectLabel];
-        [self addSubview:_selectField];
+        [self addSubview:_selectLabel];
     }
     return self;
 }
@@ -52,63 +45,83 @@
     float selectFieldCenterX = self.center.x;
     //父View的中心x坐标
     float parentViewCenterX = self.superview.center.x;
+    //弹出popUpView的y坐标
     float y=self.frame.origin.y+self.frame.size.height;
+    //弹出popUpView的x坐标
     float x=0;
+    //弹出popUpView的小箭头x坐标
     float arrowX=0;
     
-    //如果selectField的中心靠屏幕左边
+    //如果popUpView的中心靠屏幕左边
     if(selectFieldCenterX < parentViewCenterX)
     {
         x=10;
         arrowX=self.frame.size.width-x;
     }
-    //如果selectField的中心是屏幕中心
+    //如果popUpView的中心是屏幕中心
     else if (selectFieldCenterX==parentViewCenterX)
     {
         x=(parentViewWidth-popWidth)/2;
         arrowX=(popWidth-18.5)/2;
     }
-    //如果selectField的中心靠屏幕右边
+    //如果popUpView的中心靠屏幕右边
     else
     {
         x=parentViewWidth-popWidth-10;
         arrowX=(self.frame.size.width)/2;
     }
     
-    //PopView
-    UIView *popUpView = [[UIView alloc] initWithFrame:CGRectMake(x, y+5, popWidth, 260)];
-    [popUpView setBackgroundColor:[UIColor clearColor]];
+    //popUpView
+    _popUpView = [[UIView alloc] initWithFrame:CGRectMake(x, y+5, popWidth, 260)];
+    [_popUpView setBackgroundColor:[UIColor clearColor]];
+    [_popUpView setHidden:YES];
     
-    //PopView的小箭头
+    //popUpView的小箭头
     UIImageView *popArrowView = [[UIImageView alloc] initWithFrame:CGRectMake(arrowX, 0, 18.5, 5.5)];
     [popArrowView setImage:[UIImage imageNamed:@"popup_arrow.png"]];
     
-    //PopTableView的主体
-    _selectPopUp = [[UITableView alloc] initWithFrame:CGRectMake(0, popArrowView.frame.size.height, popWidth, 260)];
-    [_selectPopUp setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [_selectPopUp setDelegate:self];
-    [_selectPopUp setDataSource:self];
+    //popUpView的主体
+    UITableView *selectPopUp = [[UITableView alloc] initWithFrame:CGRectMake(0, popArrowView.frame.size.height, popWidth, 260)];
+    [selectPopUp setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [selectPopUp setDelegate:self];
+    [selectPopUp setDataSource:self];
     
+    //popUpView的背景图
     UIImageView *popBgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"popup_bg.png"]];
-    [popBgView setFrame:_selectPopUp.frame];
+    [popBgView setFrame:selectPopUp.frame];
     
-    [_selectPopUp setBackgroundView:popBgView];
+    [selectPopUp setBackgroundView:popBgView];
     
-    [popUpView addSubview:popArrowView];
-    [popUpView addSubview:_selectPopUp];
+    [_popUpView addSubview:popArrowView];
+    [_popUpView addSubview:selectPopUp];
     
-    [self.superview addSubview:popUpView];
+    //向父View添加弹出的popUpView
+    [self.superview addSubview:_popUpView];
 }
 
+//控制弹出view的显示和隐藏
+-(void)togglePopUpView
+{
+    if(_popUpView.hidden)
+    {
+        [_popUpView setHidden:NO];
+    }
+    else
+    {
+        [_popUpView setHidden:YES];
+    }
+}
+
+#pragma mark - Table View Methods
 //下面都是实现UITableViewDelegate,UITableViewDataSource两个协议中定义的方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     //返回行数
     return [_selectData count];
 }
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AppDelegate *app = [[UIApplication sharedApplication] delegate];
     //返回一行的视图
     NSUInteger row=[indexPath row];
     NSString * tableIdentifier=@"Simple table";
@@ -119,7 +132,7 @@
         cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:tableIdentifier];
     }
     cell.textLabel.text=[_selectData objectAtIndex:row];//设置文字
-    cell.textLabel.font = [app getGlobalFont:14];
+    cell.textLabel.font = [UIFont fontWithName:FONT_FAMILY size:14];
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.textAlignment = UITextAlignmentCenter;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

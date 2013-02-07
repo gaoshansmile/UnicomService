@@ -10,11 +10,11 @@
 
 @implementation SystemStat
 
-@synthesize sys = _sys;
-@synthesize domain = _domain;
-@synthesize province = _province;
-@synthesize total = _total;
-@synthesize finish = _finish;
-@synthesize unfinish = _unfinish;
+@synthesize sys;
+@synthesize domain;
+@synthesize province;
+@synthesize total;
+@synthesize finish;
+@synthesize unfinish;
 
 @end

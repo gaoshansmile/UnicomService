@@ -41,7 +41,6 @@
 -(void)initView
 {
     [self setBackgroundColor:_backGroundColor];
-    AppDelegate *app = [[UIApplication sharedApplication] delegate];
     
     //文字
     UITextView *textView=[[UITextView alloc] initWithFrame:CGRectMake(10, 5, 100, 22)];
@@ -49,7 +48,7 @@
     [textView setEditable:NO];
     [textView setTextColor:[UIColor colorWithHexString:_fontColor]];
     [textView setBackgroundColor:[UIColor clearColor]];
-    [textView setFont:[app getGlobalFont:13]];
+    [textView setFont:[UIFont fontWithName:FONT_FAMILY size:13]];
     
     UIImageView *imageView=nil;
     
@@ -64,6 +63,7 @@
         [_textField setTag:_textFieldTag];
         [_textField setDelegate:_textFieldDelegate];
         [_textField setReturnKeyType:_textReturnKeyType];
+        [_textField setText:@"aaa"];
     }
     //选择框
     else{

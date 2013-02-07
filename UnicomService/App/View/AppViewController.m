@@ -31,8 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    AppDelegate *app = [[UIApplication sharedApplication] delegate];
     
     //loading动画注册
     _hudProgress = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
@@ -47,7 +45,8 @@
     [_topBarText setTextAlignment:NSTextAlignmentCenter];
     [_topBarText setBackgroundColor:[UIColor clearColor]];
     [_topBarText setTextColor:[UIColor whiteColor]];
-    [_topBarText setFont:[app getGlobalFont:18]];
+    [_topBarText setFont:[UIFont fontWithName:FONT_FAMILY size:18]];
+    
     [_topBarText setText:@"移动客户端"];
     [_topBar addSubview:_topBarText];
     [self.view addSubview:_topBar];

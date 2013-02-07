@@ -65,4 +65,16 @@ static HttpService *_shareInstance=nil;
     return images;
 }
 
+//系统运行状态请求
+-(NSMutableArray *)doSystemRequest:(NSString *)url
+{
+    NSString *result=[self getRequest:url];
+    NSMutableArray *images=nil;
+    if (result) {
+        NSLog(@"respone result:%@",result);
+        images=[JsonParseService parseSystem:result];
+    }
+    return images;
+}
+
 @end
