@@ -6,8 +6,8 @@
 //  Copyright (c) 2013年 Enway. All rights reserved.
 //
 
-#import "AppViewController.h"
+#import "CommonController.h"
 
-@interface ToDoController : AppViewController
+@interface ToDoController : CommonController
 
 @end

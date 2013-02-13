@@ -12,19 +12,29 @@
 //登陆URL
 +(NSString *) loginUrl
 {
-    return [USDOMAIN stringByAppendingFormat:@"/application/login?version=%@",VERSION];
+    return [self wrapUrl:@"login"];
 }
 
 //顶部大图URL
 +(NSString *) topImageUrl
 {
-    return [USDOMAIN stringByAppendingFormat:@"/application/getImages?version=%@",VERSION];
+    return [self wrapUrl:@"getImages"];
 }
 
 //系统运行状态
 +(NSString *) systemUrl
 {
-    return [USDOMAIN stringByAppendingFormat:@"/application/getSystemState?version=%@",VERSION];
+    return [self wrapUrl:@"getSystemState"];
+}
+
++(NSString *) warnListUrl
+{
+    return [self wrapUrl:@"getWarningList"];
+}
+
++(NSString *) wrapUrl:(NSString *)method
+{
+    return [USDOMAIN stringByAppendingFormat:@"/application/%@?version=%@",method,VERSION];
 }
 
 @end

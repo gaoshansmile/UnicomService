@@ -10,6 +10,7 @@
 #import "MBProgressHUD.h"
 #import "UIColor-RGB.h"
 #import "HttpService.h"
+#import "Const.h"
 
 @interface AppViewController : UIViewController<MBProgressHUDDelegate>
 

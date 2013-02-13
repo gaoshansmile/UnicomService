@@ -68,7 +68,7 @@ static HttpService *_shareInstance=nil;
 }
 
 //系统运行状态请求
--(NSMutableArray *)doSystemRequest:(NSString *)url
+-(NSMutableArray *)doHttpRequest:(NSString *)url
 {
     NSString *result=[self getRequest:url];
     NSMutableArray *systemStats=nil;
@@ -78,5 +78,6 @@ static HttpService *_shareInstance=nil;
     }
     return systemStats;
 }
+
 
 @end

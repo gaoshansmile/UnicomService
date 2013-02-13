@@ -14,4 +14,7 @@
 +(NSString *) topImageUrl;
 
 +(NSString *) systemUrl;
+
++(NSString *) warnListUrl;
+
 @end

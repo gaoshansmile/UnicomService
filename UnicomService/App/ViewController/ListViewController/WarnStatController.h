@@ -1,13 +1,13 @@
 //
-//  TopTenController.h
+//  WarnStatController.h
 //  UnicomService
 //
 //  Created by 老邢 Thierry on 13-1-26.
 //  Copyright (c) 2013年 Enway. All rights reserved.
 //
 
-#import "AppViewController.h"
+#import "CommonController.h"
 
-@interface TopTenController : AppViewController
+@interface WarnStatController : CommonController
 
 @end
