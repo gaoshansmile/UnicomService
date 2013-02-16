@@ -23,10 +23,9 @@
 	// Do any additional setup after loading the view.
     _tableCellHeight=50;
     //展示数据的列表
-    _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 35+self.topBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-self.topBar.frame.size.height-45) style:UITableViewStylePlain];
+    _tableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 35+self.topBar.frame.size.height, self.view.frame.size.width, self.view.frame.size.height-self.topBar.frame.size.height-35) style:UITableViewStylePlain];
     [_tableView setDelegate:self];
     [_tableView setDataSource:self];
-    
     [self.view addSubview:_tableView];
 }
 
@@ -79,7 +78,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    //0.2秒后取消选中的背景
+    [self performSelector:@selector(deselect:) withObject:tableView afterDelay:0.2f];
+}
+
+- (void)deselect:(UITableView *)tableView
+{
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,7 +100,7 @@
     [self performSelectorInBackground:@selector(asynGetRequest) withObject:nil];
 }
 
--(void)hideAllPopView
+-(void)hideOtherPopView
 {
     
 }

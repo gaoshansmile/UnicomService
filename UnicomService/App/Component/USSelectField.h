@@ -11,12 +11,12 @@
 @class USSelectField;
 @protocol SelectFieldDelegate <NSObject>
 @required
+
 // SelectField选择一项
 - (void)selectField:(USSelectField *)selectField didSelectItemAtIndex:(NSUInteger)index;
-
-@optional
 // 隐藏其它弹出的View
-- (void)hideAllPopView;
+- (void)hideOtherPopView:(USSelectField *) selectField;
+
 @end
 
 @interface USSelectField : UIControl<UITableViewDataSource,UITableViewDelegate>

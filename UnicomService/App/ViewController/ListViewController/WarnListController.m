@@ -8,6 +8,8 @@
 
 #import "WarnListController.h"
 #import "Warn.h"
+#import "WarnDetailController.h"
+
 @interface WarnListController ()
 
 @end
@@ -37,20 +39,20 @@
 
     float bodyWidth = self.view.bounds.size.width;
     
+    //级别选择菜单
     _levelField = [[USSelectField alloc] initWithFrame:CGRectMake(0, self.topBar.frame.size.height, bodyWidth/3, 35)];
     [_levelField setDelegate:self];
     [_levelField setTag:LEVELTAG];
-    //弹出选择框的数据
     _levelData = [[NSMutableArray alloc] initWithObjects:
                   [[NSMutableArray alloc] initWithObjects:@"全部",@"all",nil],
                   [[NSMutableArray alloc] initWithObjects:@"重要",@"4",nil],
                   [[NSMutableArray alloc] initWithObjects:@"紧急",@"5",nil],
                   nil];
     
+    //域选择菜单
     _domainField = [[USSelectField alloc] initWithFrame:CGRectMake(bodyWidth/3, self.topBar.frame.size.height, bodyWidth/3, 35)];
     [_domainField setDelegate:self];
     [_domainField setTag:DOMAINTAG];
-    //弹出选择框的数据
     _domainData = [[NSMutableArray alloc] initWithObjects:
                   [[NSMutableArray alloc] initWithObjects:@"全部",@"all",nil],
                   [[NSMutableArray alloc] initWithObjects:@"BSS域",@"BSS",nil],
@@ -59,10 +61,10 @@
                   [[NSMutableArray alloc] initWithObjects:@"DSS域",@"DSS",nil],
                   nil];
     
+    //地区选择菜单
     _areaField = [[USSelectField alloc] initWithFrame:CGRectMake(bodyWidth*2/3, self.topBar.frame.size.height, bodyWidth/3, 35)];
     [_areaField setDelegate:self];
     [_areaField setTag:AREATAG];
-    //弹出选择框的数据
     _areaData = [[NSMutableArray alloc] initWithObjects:
                    [[NSMutableArray alloc] initWithObjects:@"总部",@"总部",nil],
                    [[NSMutableArray alloc] initWithObjects:@"省分",@"省分",nil],
@@ -133,6 +135,15 @@
     [cell addSubview:time];
 }
 
+//选中TableView的一项
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    NSMutableDictionary *data = [[self tableData] objectAtIndex:[indexPath row]];
+    WarnDetailController *wdc = [[WarnDetailController alloc] initWithData:data];
+    [self.navigationController pushViewController:wdc animated:YES];
+}
+
 
 #pragma mark - Super Methods
 - (void)selectField:(USSelectField *)selectField didSelectItemAtIndex:(NSUInteger)index;
@@ -153,11 +164,22 @@
     [super selectField:selectField didSelectItemAtIndex:index];
 }
 
--(void)hideAllPopView
+#pragma mark - USFieldSelect Delegate Method
+//关闭其他弹出菜单
+-(void)hideOtherPopView:(USSelectField *)selectField
 {
-    [_levelField hidePopView];
-    [_domainField hidePopView];
-    [_areaField hidePopView];
+    if([selectField tag]!=LEVELTAG)
+    {
+        [_levelField hidePopView];
+    }
+    if([selectField tag]!=AREATAG)
+    {
+         [_areaField hidePopView];
+    }
+    if([selectField tag]!=DOMAINTAG)
+    {
+        [_domainField hidePopView];
+    }
 }
 
 - (void)didReceiveMemoryWarning

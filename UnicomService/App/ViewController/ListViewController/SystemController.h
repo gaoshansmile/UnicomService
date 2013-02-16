@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CommonController.h"
 
-@interface SystemController : CommonController<CommonControllerDelegate>
+@interface SystemController : CommonController
 {
     NSString *currentType;
 }

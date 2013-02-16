@@ -112,7 +112,7 @@
 //控制弹出view的显示和隐藏
 -(void)togglePopUpView
 {
-    [_delegate hideAllPopView];
+    [_delegate hideOtherPopView:self];
     if(_popUpView.hidden)
     {
         [_popUpView setHidden:NO];

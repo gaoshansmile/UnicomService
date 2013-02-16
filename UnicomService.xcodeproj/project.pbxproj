@@ -125,6 +125,8 @@
 		7CC108E916A13E000071084B /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CC108E816A13E000071084B /* check.png */; };
 		7CDA3E5516A9425100AA79C6 /* ImageFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDA3E5416A9425100AA79C6 /* ImageFlowView.m */; };
 		7CE6914C16A7F71600F89EA7 /* AppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE6914B16A7F71600F89EA7 /* AppContext.m */; };
+		7CE7EC8B16CF65CA00483EE3 /* WarnDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE7EC8A16CF65CA00483EE3 /* WarnDetailController.m */; };
+		7CE7EC9116CF88F900483EE3 /* bg_border@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CE7EC9016CF88F900483EE3 /* bg_border@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -322,6 +324,9 @@
 		7CDA3E5416A9425100AA79C6 /* ImageFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageFlowView.m; sourceTree = "<group>"; };
 		7CE6914A16A7F71600F89EA7 /* AppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppContext.h; sourceTree = "<group>"; };
 		7CE6914B16A7F71600F89EA7 /* AppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppContext.m; sourceTree = "<group>"; };
+		7CE7EC8916CF65CA00483EE3 /* WarnDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WarnDetailController.h; sourceTree = "<group>"; };
+		7CE7EC8A16CF65CA00483EE3 /* WarnDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WarnDetailController.m; sourceTree = "<group>"; };
+		7CE7EC9016CF88F900483EE3 /* bg_border@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_border@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,6 +394,8 @@
 				7C2E826516CA3502007196FE /* WarnStatController.m */,
 				7C2E826616CA3502007196FE /* WarnTrendController.h */,
 				7C2E826716CA3502007196FE /* WarnTrendController.m */,
+				7CE7EC8916CF65CA00483EE3 /* WarnDetailController.h */,
+				7CE7EC8A16CF65CA00483EE3 /* WarnDetailController.m */,
 			);
 			path = ListViewController;
 			sourceTree = "<group>";
@@ -678,6 +685,7 @@
 		7CC079C316A01103000451CF /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7CE7EC9016CF88F900483EE3 /* bg_border@2x.png */,
 				7C7E1BD316C112110072EB66 /* pop_sep.png */,
 				7C948B3316C0B0C900975EAB /* popup_arrow.png */,
 				7C948B3416C0B0C900975EAB /* popup_bg.png */,
@@ -879,6 +887,7 @@
 				7C948B3516C0B0C900975EAB /* popup_arrow.png in Resources */,
 				7C948B3616C0B0C900975EAB /* popup_bg.png in Resources */,
 				7C7E1BD416C112110072EB66 /* pop_sep.png in Resources */,
+				7CE7EC9116CF88F900483EE3 /* bg_border@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -972,6 +981,7 @@
 				7C2E827316CA3502007196FE /* LoginController.m in Sources */,
 				7C2E827416CA3502007196FE /* MainViewController.m in Sources */,
 				7C2E827716CA355A007196FE /* CommonController.m in Sources */,
+				7CE7EC8B16CF65CA00483EE3 /* WarnDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

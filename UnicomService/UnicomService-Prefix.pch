@@ -24,9 +24,13 @@
 #define DOMAINTAG                                          10016
 
 
+
+
 #define VERSION                                            @"1.0"
 #define USDOMAIN                                           @"http://127.0.0.1:9000"
 #define FONT_FAMILY                                        @"FZLanTingHei-R-GBK"
+#define FONT_GRAY_COLOR                                    @"#464646"
+#define MAIN_BG_COLOR                                      @"#e4e4e4"
 
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
 #define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)

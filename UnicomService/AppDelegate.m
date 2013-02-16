@@ -23,7 +23,7 @@
     //注册全局上下文
     [AppContext init];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor colorWithHexString:MAIN_BG_COLOR];
     
     //初始化登录View
     _loginController=[[LoginController alloc] init];
