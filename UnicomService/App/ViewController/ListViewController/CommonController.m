@@ -100,7 +100,7 @@
     [self performSelectorInBackground:@selector(asynGetRequest) withObject:nil];
 }
 
--(void)hideOtherPopView
+-(void)hideOtherPopView:(USSelectField *)selectField
 {
     
 }
