@@ -167,11 +167,14 @@ static BOOL rememberName = YES;
         NSError *error=nil;
         AppDelegate *app = [[UIApplication sharedApplication] delegate];
         [[app managedObjectContext] save:&error];
-        
-        //跳转到主页
-        MainViewController *mainController=[[MainViewController alloc] init];
-        [app.navController pushViewController:mainController animated:YES];
         [self hideLoading];
+        //跳转到主页
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:1.0];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:YES];
+        MainViewController *mainController=[[MainViewController alloc] init];
+        [app.navController pushViewController:mainController animated:NO];
+        [UIView commitAnimations];
     }
     else
     {
